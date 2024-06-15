@@ -1,0 +1,104 @@
+{
+  "dudus": [
+    {
+      "sabor": "Geladinho de Ninho com Nutella",
+      "preco": 8,
+      "qtd": 1,
+      "desc": "Delicioso dudu de leite ninho com creme de avelã",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156293/duduNinhoNutella_cyveoq.png)",
+      "id": "895e"
+    },
+    {
+      "sabor": "Geladinho de Paçoca",
+      "preco": 6,
+      "qtd": 1,
+      "desc": "Delicioso dudu de paçoca e raspas de amedoim",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduPacoca_sl74od.png)",
+      "id": "323a"
+    },
+    {
+      "sabor": "Geladinho de Beijinho",
+      "preco": 6,
+      "qtd": 1,
+      "desc": "Delicioso dudu de coco com raspas de coco",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduBeijinho_x3hsl9.png)",
+      "id": "32b2"
+    },
+    {
+      "sabor": "Geladinho de Morango",
+      "preco": 7,
+      "qtd": 1,
+      "desc": "Delicioso dudu de morango",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156296/duduMorango_x5jmql.png)",
+      "id": "b2a3"
+    },
+    {
+      "sabor": "Geladinho de Óreo",
+      "preco": 8,
+      "qtd": 1,
+      "desc": "Delicioso dudu de leite ninho com biscoito óreo",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduOreo_w37ixz.png)",
+      "id": "ea2c"
+    },
+    {
+      "sabor": "Geladinho de Maracujá",
+      "preco": 8,
+      "qtd": 1,
+      "desc": "Delicioso dudu de creme de maracujá",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156291/duduMaracuja_mvmbuq.png)",
+      "id": "8450"
+    },
+    {
+      "sabor": "Geladinho de Chocolatudo",
+      "preco": 8,
+      "qtd": 1,
+      "desc": "Delicioso dudu de chocolate com granulado e raspas de M&M",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduChocolate_nkjxqx.png)",
+      "id": "975f"
+    }
+  ],
+  "docinhos": [
+    {
+      "sabor": "Brigadeiro de ninho com nutella (10Un)",
+      "preco": 12,
+      "qtd": 1,
+      "desc": "Delicioso brigadeiro de leite ninho com creme de avelã",
+      "img": " background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718159949/brigadeiroNinhoNutela_dqpkq8.png)",
+      "id": "b857"
+    },
+    {
+      "sabor": "Beijinho (10Un)",
+      "preco": 12,
+      "qtd": 1,
+      "desc": "Delicioso beijinho de coco com raspas de coco",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718159949/beijnho_x8oaoi.png)",
+      "id": "9be0"
+    },
+    {
+      "sabor": "Surpresa de uva (10Un)",
+      "preco": 12,
+      "qtd": 1,
+      "desc": "Delicioso doce com uma uva dentro",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718159950/supresadeuva_wh0qn5.png)",
+      "id": "3ecb"
+    }
+  ],
+  "sacola": [
+    {
+      "id": "32b2",
+      "sabor": "Geladinho de Beijinho",
+      "preco": 6,
+      "qtd": 1,
+      "desc": "Delicioso dudu de coco com raspas de coco",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduBeijinho_x3hsl9.png)"
+    },
+    {
+      "id": "b2a3",
+      "sabor": "Geladinho de Morango",
+      "preco": 7,
+      "qtd": 1,
+      "desc": "Delicioso dudu de morango",
+      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156296/duduMorango_x5jmql.png)"
+    }
+  ]
+}
