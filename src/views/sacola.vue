@@ -132,14 +132,14 @@ export default {
           });
     },
     async getSacola(){
-        const req = await fetch('http://localhost:3000/sacola')
+        const req = await fetch('https://backlets.vercel.app/sacola')
         const data = await req.json()
 
         this.sacola = data
         return data
     },
     async removeItem(i) {
-        const req = await fetch(`http://localhost:3000/sacola/${i.id}`,
+        const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
         {
           method : 'DELETE'
 
@@ -152,7 +152,7 @@ export default {
       const qtdItem = i.qtd + 1
       const precoItem = i.preco + (i.preco/i.qtd)
       const dataJson = JSON.stringify({qtd : qtdItem,preco : precoItem})
-      const req = await fetch(`http://localhost:3000/sacola/${i.id}`,{
+      const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,{
         method : 'PATCH',
         headers : {"Content-Type" : "application/json"},
         body : dataJson
@@ -167,7 +167,7 @@ export default {
         const qtdItem = i.qtd - 1
         const precoItem = i.preco - (i.preco/i.qtd)
         const dataJson = JSON.stringify({qtd : qtdItem,preco : precoItem})
-        const req = await fetch(`http://localhost:3000/sacola/${i.id}`,{
+        const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,{
           method : 'PATCH',
           headers : {"Content-Type" : "application/json"},
           body : dataJson
@@ -190,7 +190,7 @@ export default {
         var sacola = this.getSacola()
         sacola.then(item => {
           item.forEach(async (i) =>{
-              const req = await fetch(`http://localhost:3000/sacola/${i.id}`,
+              const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
                       {
                         method : 'DELETE'
 

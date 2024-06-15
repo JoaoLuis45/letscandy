@@ -74,21 +74,21 @@ export default {
   },
   methods: {
     async getGeladinhos () {
-      const req = await fetch('http://localhost:3000/dudus')
+      const req = await fetch('https://backlets.vercel.app/dudus')
       const data = await req.json()
 
       this.listaGeladinhos = data
 
     },
     async getDocinhos () {
-      const req = await fetch('http://localhost:3000/docinhos')
+      const req = await fetch('https://backlets.vercel.app/docinhos')
       const data = await req.json()
 
       this.listaDocinhos = data
 
     },
     async getSacola() {
-      const req = await fetch('http://localhost:3000/sacola')
+      const req = await fetch('https://backlets.vercel.app/sacola')
       const data = await req.json()
 
       this.sacola = data
@@ -135,7 +135,7 @@ export default {
       this.sacola.push(obj)
 
       const dataJson = JSON.stringify(obj)
-      const req = await fetch('http://localhost:3000/sacola',{
+      const req = await fetch('https://backlets.vercel.app/sacola',{
         method : "POST",
         headers : {"Content-Type" : "application/json"},
         body : dataJson
