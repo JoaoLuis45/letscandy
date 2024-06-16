@@ -16,6 +16,30 @@ export default {
     menuInicial,
     Footer
   },
+  methods:{
+    async getSacola(){
+        const req = await fetch('https://backlets.vercel.app/sacola')
+        const data = await req.json()
+        return data
+    },
+    async cleanSacola() {  
+        var sacola = this.getSacola()
+        sacola.then(item => {
+          item.forEach(async (i) =>{
+              const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
+                      {
+                        method : 'DELETE'
+
+                      }
+                      )
+                      this.getSacola() 
+          })     
+        }) 
+    },
+  },
+  created(){    
+    this.cleanSacola()
+  }
 }
 </script>
 
@@ -286,6 +310,7 @@ body{
    align-items: center;
    font-size: 20px;
    border-radius: 15px;
+   width: 25%;
 }
 
 .bSacola2{

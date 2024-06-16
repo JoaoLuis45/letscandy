@@ -200,6 +200,7 @@ export default {
                       )
                       this.getSacola() 
           })
+          this.sacola = []
           this.notifyCleanSacola()
           
         })       
