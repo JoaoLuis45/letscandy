@@ -23,4 +23,12 @@ name : 'TitleSobreNos'
     border-bottom-right-radius: 10px;
     border-bottom: 5px solid var(--cor-primaria);
 }
+
+@media(max-width:730px){
+    .titleSobreNos{
+        font-size: 30px;
+        width: 170px;
+        margin-top: 1em;
+    }
+}
 </style>

@@ -3,10 +3,10 @@
     <div class="container-fluid footer">
       <div class="container-fluid">
         <div class="row align-items-start">
-          <div class="col-6 colFooter">
+          <div class="col-md-6 colFooter">
             <div class="footerImg"></div> 
           </div>
-          <div class="col-2 colFooter">
+          <div class="col-md-2 colFooter">
 
             <div class="titleFooter">
               Sabores
@@ -24,14 +24,14 @@
 
 
           </div>
-          <div class="col-2 colFooter">
+          <div class="col-md-2 colFooter">
             <div class="titleFooter">Localização</div>
             <div class="elementFooter">
               <div class="imgloc"></div>
               <p>Rua Barão de Bonito Nº 671 <br> Recife - Várzea <br>50740-080</p>
             </div>
           </div>
-          <div class="col-2 colFooter">
+          <div class="col-md-2 colFooter">
             <div class="titleFooter">Quem Somos</div>
             <div class="elementFooter">
               <div class="imgQS"></div>

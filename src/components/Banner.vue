@@ -36,3 +36,12 @@ export default {
     name : 'Banner'
 }
 </script>
+
+
+<style scoped>
+@media(max-width:730px){
+  .carousel-indicators{
+    top:3.5em;
+  }
+}
+</style>

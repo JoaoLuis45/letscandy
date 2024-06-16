@@ -155,4 +155,27 @@
     background-color: #db0b0b91;
     color: #fff;
   }
+
+  @media(max-width:730px){
+    .bodySobreNos{
+      margin-top: 2em;
+    }
+
+    .imgSobreNos{
+      width: 350px;
+      height: 300px;
+    }
+
+    .btnTab{
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .tabs{
+      height: 450px;
+    }
+    .tab{
+      width: 100%;
+    }
+  }
   </style>

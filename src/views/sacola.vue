@@ -4,7 +4,9 @@
     <EmptySacola v-if="sacola.length == 0"/>
     <div class="bSacola2" v-else>
             <div class="itemSacola" v-for="(item,index) in sacola" :key="index">
-              <div class="itemImg" :style="item.img"></div>
+              <div class="colImg">
+                <div class="itemImg" :style="item.img"></div>
+              </div>
              
                 <div class="itemColuna">
                   <div class="itemName">{{ item.sabor }}</div>
@@ -12,9 +14,9 @@
                   <div class="itemPrice"> R${{ item.preco }}</div>
                   <div class="itemDescr">{{ item.desc }}</div>
                 </div>
-                <div class="actions ms-auto me-5">
-                    <div class="btnActions" @click="addQtdItem(item)">Adicionar</div>
-                    <div class="btnActions" @click="remQtdItem(item)">Remover</div>
+                <div class="actions ms-auto">
+                    <div class="btnActionsAdd" @click="addQtdItem(item)">Adicionar</div>
+                    <div class="btnActionsRem" @click="remQtdItem(item)">Remover</div>
                 </div>
              
             </div>
@@ -395,10 +397,17 @@ export default {
 
 <style scoped>
 
+.colImg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+
+}
+
 .itemImg{
   width: 100px;
   height: 100px;
-  margin-left: 20px;
   border-radius: 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -444,9 +453,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-right: 45px;
 }
 
-.btnActions{
+.btnActionsAdd{
   border: 1px solid var(--cor-primaria);
   border-radius: 10px;
   padding: 10px 20px;
@@ -456,15 +466,80 @@ export default {
   transition: .5s;
 }
 
-.btnActions:hover{
+.btnActionsAdd:hover{
   background-color: var(--cor-primaria);
   color: #fff;
 }
+
+.btnActionsRem{
+  border: 1px solid var(--cor-primaria);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: var(--cor-primaria);
+  cursor: pointer;
+  font-weight: bold;
+  transition: .5s;
+}
+
+.btnActionsRem:hover{
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
 
 .finalizarPedido{
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 10em;
+}
+
+@media(max-width: 730px){
+  .itemSacola{
+    height: auto;
+  }
+  .itemName{
+    font-size: 20px;
+  }
+  .actions{
+    margin-right: 15px;
+  }
+
+  .itemImg{
+    width: 80px;
+    height: 80px;
+  }
+  .itemImg:hover{
+  width: 50px;
+  height: 50px;
+}
+
+.btnActionsAdd{
+      font-size: 0; /* Esconde o texto */
+      padding: 10px; /* Ajusta o padding para centralizar o ícone */
+      border-radius: 50%;
+  }
+
+  .btnActionsAdd::before {
+      content: "+";
+      font-size: 16px;
+  }
+  .btnActionsRem{
+      font-size: 0; /* Esconde o texto */
+      padding: 10px; /* Ajusta o padding para centralizar o ícone */
+      border-radius: 50%;
+      text-align: center;
+  }
+
+  .btnActionsRem::before {
+      content: "-";
+      font-size: 16px;
+  }
+
+  .finalizarPedido{
+    height: 4em;
+    margin-bottom: 1em;
+  }
+  
 }
 </style>

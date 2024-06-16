@@ -9,7 +9,7 @@
         <!-- INICIO PRODUTOS DUDU -->
         <div class="container-fluid mt-5 mb-5">
           <div class="row align-items-start">
-            <div class="col-3 colunaItems" v-for="(l,index) in listaGeladinhos" :key="index">
+            <div class="col-md-3 colunaItems" v-for="(l,index) in listaGeladinhos" :key="index">
               <div class="card" style="width: 25rem; height: 25rem; display: flex;  background-color: rgba(233, 222, 222, 0.598); justify-content: space-between; border-radius: 15px;">
                   <div class="card-img-top imgcard rounded-circle" :style="l.img"></div>
                   <div class="card-body">
@@ -29,7 +29,7 @@
                 <!-- INICIO PRODUTOS Docinhos -->
                 <div class="container-fluid mt-5 mb-5">
             <div class="row align-items-start">
-              <div class="col-3 colunaItems" v-for="(l,index) in listaDocinhos" :key="index">
+              <div class="col-md-3 colunaItems" v-for="(l,index) in listaDocinhos" :key="index">
                 <div class="card" style="width: 25rem; height: 25rem; display: flex;  background-color: rgba(233, 222, 222, 0.598); justify-content: space-between;">
                     <div class="card-img-top imgcard rounded-circle" :style="l.img"></div>
                     <div class="card-body">

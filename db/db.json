@@ -84,21 +84,6 @@
     }
   ],
   "sacola": [
-    {
-      "id": "32b2",
-      "sabor": "Geladinho de Beijinho",
-      "preco": 6,
-      "qtd": 1,
-      "desc": "Delicioso dudu de coco com raspas de coco",
-      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156292/duduBeijinho_x3hsl9.png)"
-    },
-    {
-      "id": "b2a3",
-      "sabor": "Geladinho de Morango",
-      "preco": 7,
-      "qtd": 1,
-      "desc": "Delicioso dudu de morango",
-      "img": "background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718156296/duduMorango_x5jmql.png)"
-    }
+
   ]
 }

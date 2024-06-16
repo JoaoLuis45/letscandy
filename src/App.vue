@@ -38,10 +38,8 @@ body{
 
 .menu {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
     background-color: var(--cor-secundaria);
-    height: 60px;
+    height: 80px;
 }
 
 .imagemCarrossel{
@@ -153,13 +151,14 @@ body{
 }
 
 .footer{
-    background-color: var(--cor-primaria);
+
     height: 30em;
     margin: 0;
     padding: 0;
 }
 
 .colFooter{
+    background-color: var(--cor-primaria);
     display: flex;
     height: 30em;
     justify-content: space-between;
@@ -200,6 +199,7 @@ body{
     margin-bottom: 20px;
     height: 350px;
     justify-content: space-evenly;
+    padding: 0px 10px;
 }
 
 .linksFooter{
@@ -307,5 +307,65 @@ body{
 
 .itemSacola:hover{
     background-color: #dc35463e;
+}
+
+.btnColunaa{
+  border-radius: 15px;
+  margin-top: 140px;
+}
+
+@media(max-width : 730px){
+    /* GERAL */
+    .container {
+        padding: 20px 0;
+    }
+
+    /* slider */
+    #mainSlider .carousel-inner, #mainSlider .carousel-item{
+        height: auto;
+    }
+
+    .imagemCarrossel{
+        background-size: contain;
+        height: 5em;
+    }
+
+    .fotocol1{
+        height: 350px;
+        width:  350px;
+    }
+
+    .coluna1{
+        height: auto;
+        padding: 20px 0;
+    }
+    .btnColunaa{
+        margin-top: 1em;
+        margin-top: 1em;
+    }
+
+    .titleCardapio{
+        margin-top: 1em;
+    }
+    .colunaItems{
+        margin-bottom: 0px;
+    }
+
+    .titleSacola{
+        width: 120px;
+        font-size: 30px;
+    }
+    .titleCardapio{
+        font-size: 30px;
+        width: 150px;
+    }
+    .titleChild{
+        font-size: 25px;
+        width: 150px;
+    }
+    .colunaItems{
+        height: 27em;
+    }
+    
 }
 </style>
