@@ -134,31 +134,27 @@ export default {
           });
     },
     async getSacola(){
-        const req = await fetch('https://backlets.vercel.app/sacola')
-        const data = await req.json()
-
-        this.sacola = data
-        return data
+      this.sacola = JSON.parse(localStorage.getItem('sacola')) || [];
+      return this.sacola
     },
     async removeItem(i) {
-        const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
-        {
-          method : 'DELETE'
-
-        }
-        )
+        let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
+        sacola = sacola.filter(sacolaItem => sacolaItem.id !== i.id);
+        localStorage.setItem('sacola', JSON.stringify(sacola));
+        this.sacola = sacola;
         this.notifySucessRemovedItem()
         this.getSacola() 
     },
     async addQtdItem(i){
-      const qtdItem = i.qtd + 1
-      const precoItem = i.preco + (i.preco/i.qtd)
-      const dataJson = JSON.stringify({qtd : qtdItem,preco : precoItem})
-      const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,{
-        method : 'PATCH',
-        headers : {"Content-Type" : "application/json"},
-        body : dataJson
-      })
+      let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
+      sacola = sacola.map(sacolaItem => {
+          if (sacolaItem.sabor === i.sabor) {
+              return { ...sacolaItem, qtd: sacolaItem.qtd + 1, preco: sacolaItem.preco + (sacolaItem.preco/sacolaItem.qtd) };
+          }
+          return sacolaItem;
+      });
+      localStorage.setItem('sacola', JSON.stringify(sacola));
+      this.sacola = sacola;
       this.notifySucessAdded()
       this.getSacola()
     },
@@ -166,14 +162,15 @@ export default {
       if(i.qtd == 1){
         this.removeItem(i)
       }else{
-        const qtdItem = i.qtd - 1
-        const precoItem = i.preco - (i.preco/i.qtd)
-        const dataJson = JSON.stringify({qtd : qtdItem,preco : precoItem})
-        const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,{
-          method : 'PATCH',
-          headers : {"Content-Type" : "application/json"},
-          body : dataJson
-          })
+        let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
+        sacola = sacola.map(sacolaItem => {
+            if (sacolaItem.sabor === i.sabor && sacolaItem.qtd > 1) {
+                return { ...sacolaItem, qtd: sacolaItem.qtd - 1, preco: sacolaItem.preco - (sacolaItem.preco/sacolaItem.qtd)  };
+            }
+            return sacolaItem;
+        });
+        localStorage.setItem('sacola', JSON.stringify(sacola));
+        this.sacola = sacola;
         this.notifySucessRemoved()
         this.getSacola()
       }
@@ -189,21 +186,9 @@ export default {
       confirmButtonText: "Sim, limpar!"
     }).then((result) => {
       if (result.isConfirmed) {
-        var sacola = this.getSacola()
-        sacola.then(item => {
-          item.forEach(async (i) =>{
-              const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
-                      {
-                        method : 'DELETE'
-
-                      }
-                      )
-                      this.getSacola() 
-          })
-          this.sacola = []
-          this.notifyCleanSacola()
-          
-        })       
+        localStorage.removeItem('sacola')
+        this.sacola = []
+        this.notifyCleanSacola()     
       }         
     }); 
     },

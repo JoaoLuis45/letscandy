@@ -88,10 +88,7 @@ export default {
 
     },
     async getSacola() {
-      const req = await fetch('https://backlets.vercel.app/sacola')
-      const data = await req.json()
-
-      this.sacola = data
+      this.sacola = JSON.parse(localStorage.getItem('sacola')) || [];
 
     },
     notifySucess(){
@@ -132,14 +129,10 @@ export default {
 
  async addSacola(obj){
     if (!this.sacola.find(item => item.sabor === obj.sabor)) {
-      this.sacola.push(obj)
-
-      const dataJson = JSON.stringify(obj)
-      const req = await fetch('https://backlets.vercel.app/sacola',{
-        method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : dataJson
-        })
+      let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
+      sacola.push(obj);
+      localStorage.setItem('sacola', JSON.stringify(sacola));
+      this.sacola = sacola;
       this.notifySucess()
     }else{
       this.notifyError()
