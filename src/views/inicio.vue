@@ -4,12 +4,14 @@
     <Banner/>
     <ColunasInicio/>
     <TitleCardapio/>
-    <TitleGeladinhos/>
 
-        <!-- INICIO PRODUTOS DUDU -->
+    <div v-for="(c,cindex) in listaCategorias" :key="cindex">
+    <TitleCategory :categoryName="c"/>
+
+        <!-- INICIO PRODUTOS -->
         <div class="container-fluid mt-5 mb-5">
           <div class="row align-items-start">
-            <div class="col-md-3 colunaItems" v-for="(l,index) in listaGeladinhos" :key="index">
+            <div class="col-md-3 colunaItems" v-for="(l,index) in listaProdutos" :key="index" v-show="l.categoria == c">
               <div class="card" style="width: 25rem; height: 25rem; display: flex;  background-color: rgba(233, 222, 222, 0.598); justify-content: space-between; border-radius: 15px;">
                   <div class="card-img-top imgcard rounded-circle" :style="l.img"></div>
                   <div class="card-body">
@@ -22,28 +24,8 @@
               </div>
           </div>
         </div>
-        <!-- FIM PRODUTOS DUDU-->
-
-        <TitleDocinhos/>
-
-                <!-- INICIO PRODUTOS Docinhos -->
-                <div class="container-fluid mt-5 mb-5">
-            <div class="row align-items-start">
-              <div class="col-md-3 colunaItems" v-for="(l,index) in listaDocinhos" :key="index">
-                <div class="card" style="width: 25rem; height: 25rem; display: flex;  background-color: rgba(233, 222, 222, 0.598); justify-content: space-between;">
-                    <div class="card-img-top imgcard rounded-circle" :style="l.img"></div>
-                    <div class="card-body">
-                      <h5 class="card-title">{{l.sabor}}</h5>
-                      <p class="card-text">{{l.desc}}</p>
-                      <p class="itemPreco">R${{l.preco}}</p>
-                      <a @click="addSacola(l)"  class="btn btn-danger">Adicionar à sacola</a>
-                    </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <!-- FIM PRODUTOS Docinhos-->
-
+      </div>
+        <!-- FIM PRODUTOS -->
   </div>
 </template>
 
@@ -52,8 +34,7 @@ import btnFlutuante from '../components/btnFlutuante.vue'
 import Banner from '../components/Banner.vue'
 import ColunasInicio from '../components/ColunasInicio.vue'
 import TitleCardapio from '../components/TitleCardapio.vue'
-import TitleGeladinhos from '../components/TitleGeladinhos.vue'
-import TitleDocinhos from '../components/TitleDocinhos.vue'
+import TitleCategory from '../components/TitleCategoria.vue'
 export default {
   name: 'inicio',
   emits : ['atualizarSacola'],
@@ -62,30 +43,75 @@ export default {
     Banner,
     ColunasInicio,
     TitleCardapio,
-    TitleGeladinhos,
-    TitleDocinhos
+    TitleCategory
   },
   data(){
     return{
-      listaGeladinhos : null,
-      listaDocinhos : null,
+      listaCategorias : null,
+      listaProdutos : null,
       sacola : []
     }
   },
   methods: {
-    async getGeladinhos () {
-      const req = await fetch('https://backlets.vercel.app/dudus')
-      const data = await req.json()
+    async getCategorias() {
+    let bd = firebase.firestore();
+    let categorias = []
+    await new Promise((resolve, reject) => {
+        bd.collection("categorias").onSnapshot((documento) => {
+            
+            const changesPromises = []
+            
+            documento.docChanges().forEach((changes) => {
+                if (changes.type === 'added' || changes.type === 'modified' || changes.type === 'removed') {
+                    const doc = changes.doc;
+                    const dados = doc.data();
 
-      this.listaGeladinhos = data
+                    const changePromise = new Promise((resolve) => {
+                        categorias.push(dados.categoria)
+                        
+                        resolve();
+                    });
 
-    },
-    async getDocinhos () {
-      const req = await fetch('https://backlets.vercel.app/docinhos')
-      const data = await req.json()
+                    changesPromises.push(changePromise);
+                }
+            });
 
-      this.listaDocinhos = data
+            Promise.all(changesPromises)
+                .then(resolve)
+                .catch(reject);
+        });
+    });
+    this.listaCategorias = categorias
+},
+    async getProdutos() {
+        let bd = firebase.firestore();
+        let produtos = []
+        await new Promise((resolve, reject) => {
+            bd.collection("produtos").onSnapshot((documento) => {
+                
+                const changesPromises = []
+                
+                documento.docChanges().forEach((changes) => {
+                    if (changes.type === 'added' || changes.type === 'modified' || changes.type === 'removed') {
+                        const doc = changes.doc;
+                        const dados = doc.data();
 
+                        const changePromise = new Promise((resolve) => {
+                          produtos.push(dados)
+                            
+                            resolve();
+                        });
+
+                        changesPromises.push(changePromise);
+                    }
+                });
+
+                Promise.all(changesPromises)
+                    .then(resolve)
+                    .catch(reject);
+            });
+        });
+        this.listaProdutos = produtos
     },
     async getSacola() {
       this.sacola = JSON.parse(localStorage.getItem('sacola')) || [];
@@ -141,8 +167,8 @@ export default {
 }
   },
   mounted(){
-    this.getGeladinhos()
-    this.getDocinhos()
+    this.getCategorias()
+    this.getProdutos()
     this.getSacola()
   }
 }

@@ -1,12 +1,26 @@
 <template>
   <div>
-    <menuInicial/>
-    <router-view/> 
+    <menuInicial :logado="logado"/>
+    <router-view @Esta-logado="logar" :user="user" @deslogar="deslogar" /> 
     <Footer/>
   </div>
 </template>
 
 <script>
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBR7LbJZAzmhO4lISVmWjIYHuL_kbtOWvA",
+    authDomain: "letscandy-b03ab.firebaseapp.com",
+    projectId: "letscandy-b03ab",
+    storageBucket: "letscandy-b03ab.appspot.com",
+    messagingSenderId: "304686858107",
+    appId: "1:304686858107:web:ab2bbaf5af55988fce07de",
+    measurementId: "G-0009X4ZZSV"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
 import menuInicial from './components/menuInicial.vue'
 import Footer from './components/Footer.vue'
 
@@ -16,30 +30,62 @@ export default {
     menuInicial,
     Footer
   },
-//   methods:{
-//     async getSacola(){
-//         const req = await fetch('https://backlets.vercel.app/sacola')
-//         const data = await req.json()
-//         return data
-//     },
-//     async cleanSacola() {  
-//         var sacola = this.getSacola()
-//         sacola.then(item => {
-//           item.forEach(async (i) =>{
-//               const req = await fetch(`https://backlets.vercel.app/sacola/${i.id}`,
-//                       {
-//                         method : 'DELETE'
-
-//                       }
-//                       )
-//                       this.getSacola() 
-//           })     
-//         }) 
-//     },
-//   },
-//   created(){    
-//     this.cleanSacola()
-//   }
+  data(){
+    return{
+        logado : false,
+        user : null
+    }
+  },
+  methods: {
+    notifySucessLogout(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Deslogado com sucesso!"
+          });
+    },
+    logar(){
+        let session = JSON.parse(localStorage.getItem('session')) || []
+        console.log()
+        if (session.length != 0){
+            this.logado = true
+            this.user = session[0]
+        }
+    },
+    deslogar(){
+        Swal.fire({
+        title: "Deseja realmente sair?",
+        text: "Passamos tão pouco tempo juntos :(",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, sair!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('session')
+            this.logado = false
+            this.user = null   
+            this.$router.replace('/')
+            this.notifySucessLogout()
+        }         
+        }); 
+        
+    },
+  },
+  mounted(){
+    this.logar()
+  }
 }
 </script>
 
@@ -135,6 +181,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     width: 200px;
+    margin: auto;
     
 }
 

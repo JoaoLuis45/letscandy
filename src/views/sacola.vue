@@ -32,14 +32,12 @@
 
 <script>
 import TitleSacola from '../components/TitleSacola.vue'
-import TitleDocinhos from '../components/TitleDocinhos.vue'
 import EmptySacola from '../components/EmptySacola.vue'
 
 export default {
   name : 'sacola',
   components : {
     TitleSacola,
-    TitleDocinhos,
     EmptySacola
   },
   data (){

@@ -26,7 +26,7 @@
             </div>
             <div v-show="extras" class="tab">
               <h1>Extras</h1>
-              <p>Me chamo Letícia Gabriela da Silva Ramos Araújo, curso direito e estou no 9º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís, cursa Ciência da Cimputação e trabalha como desenvolvedor de softwares.</p>
+              <p>Me chamo Letícia Gabriela da Silva Ramos Araújo, curso direito e estou no 9º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís, cursa Ciência da Computação e trabalha como desenvolvedor de softwares.</p>
             </div>
           </div>
         </div>
