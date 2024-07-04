@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import inicio from '../views/inicio.vue'
+import app from '../App.vue'
 
 const routes = [
   {
@@ -25,7 +26,14 @@ const routes = [
   {
     path: '/adm',
     name: 'adm',
-    component: () => import(/* webpackChunkName: "adm" */ '../views/adm.vue')
+    component: () => import(/* webpackChunkName: "adm" */ '../views/adm.vue'),
+    beforeEnter : (to, from,next) => {
+      if(!app.data().logado){
+        next('/')
+      }else{
+        next()
+      }
+    }
   }
 ]
 
