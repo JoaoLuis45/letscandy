@@ -26,14 +26,14 @@ const routes = [
   {
     path: '/adm',
     name: 'adm',
-    component: () => import(/* webpackChunkName: "adm" */ '../views/adm.vue'),
-    beforeEnter : (to, from,next) => {
-      if(!app.data().logado){
-        //next('/')
-      }else{
-       // next()
-      }
-    }
+    component: () => import(/* webpackChunkName: "adm" */ '../views/adm.vue')
+    // beforeEnter : (to, from,next) => {
+    //   if(!app.data().logado){
+    //     //next('/')
+    //   }else{
+    //    // next()
+    //   }
+    // }
   }
 ]
 
