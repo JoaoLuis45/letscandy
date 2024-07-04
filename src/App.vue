@@ -1,7 +1,7 @@
 <template>
   <div>
     <menuInicial :logado="logado"/>
-    <router-view @Esta-logado="logar" :user="user" @deslogar="deslogar" /> 
+    <router-view @Esta-logado="logar" :user="user" @deslogar="deslogar" :logado="logado" /> 
     <Footer/>
   </div>
 </template>
@@ -434,6 +434,7 @@ body{
     .titleChild{
         font-size: 25px;
         width: 150px;
+        margin: 100px 0px 0px 10px;
     }
     .colunaItems{
         height: 27em;

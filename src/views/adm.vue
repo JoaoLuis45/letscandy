@@ -37,6 +37,33 @@
           </div>
         </div>
 
+        <div class="container-fluid"><TitleCategory categoryName="Produtos desativados"/></div>
+        <div class="container-fluid tabelaDesativados">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sabor</th>
+                <th scope="col">Preço</th>
+                <th scope="col">QTD</th>
+                <th v-show="!smartphone" scope="col">Cat</th>
+                <th v-show="!smartphone" scope="col">Desc</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(p,index) in listaProdutosDesativados" :key="index">
+                <th scope="row">{{ index + 1 }}</th>
+                <td>{{ p.sabor }}</td>
+                <td>R${{ p.preco }}</td>
+                <td>{{ p.qtd }}</td>
+                <td v-show="!smartphone">{{ p.categoria }}</td>
+                <td v-show="!smartphone">{{ p.desc }}</td>
+                <td><a class="btn btn-danger btnCard btnADM" @click="ativarProduto(p.sabor)">Ativar</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
     <div>
     <!-- INICIO BOTAO FLUTUANTE -->
@@ -53,18 +80,27 @@
   
 
   <script>
+  import TitleCategory from '../components/TitleCategoria.vue'
   export default {
     name : 'adm',
-
+    components :{
+      TitleCategory
+    },
     data(){
       return{
-        
+        listaProdutosDesativados : null,
+        smartphone : false,
       }
     },
     emits:['deslogar'],
     props: ['user'],
 
     methods :{
+        verificarLarguraTela() {
+        if (window.innerWidth < 730) {
+            this.smartphone = true;
+        }
+        },
         notifySucess(msg){
             const Toast = Swal.mixin({
                 toast: true,
@@ -101,6 +137,38 @@
         },
         logout(){
             this.$emit('deslogar')
+        },
+        async getProdutosDesativados() {
+        let bd = firebase.firestore();
+        let produtos = []
+        await new Promise((resolve, reject) => {
+            bd.collection("produtos").onSnapshot((documento) => {
+                
+                const changesPromises = []
+                
+                documento.docChanges().forEach((changes) => {
+                    if (changes.type === 'added' || changes.type === 'modified' || changes.type === 'removed') {
+                        const doc = changes.doc;
+                        const dados = doc.data();
+
+                        const changePromise = new Promise((resolve) => {
+                          if(!dados.ativo){                            
+                            produtos.push(dados)
+                          }
+                            
+                            resolve();
+                        });
+
+                        changesPromises.push(changePromise);
+                    }
+                });
+
+                Promise.all(changesPromises)
+                    .then(resolve)
+                    .catch(reject);
+            });
+        });
+        this.listaProdutosDesativados = produtos
         },
         async adicionarCategoria(novaCategoria) {
           let bd = firebase.firestore();
@@ -355,7 +423,34 @@
             }        
         }
         },
+        async ativarProduto(sabor) {
+          let bd = firebase.firestore();
+          try {
+              // Procurar o documento que contém a categoria
+              let querySnapshot = await bd.collection("produtos").where("sabor", "==", sabor).get();
+              
+              if (querySnapshot.empty) {
+                this.notifyError("Produto não encontrado!")
+                  return;
+              }
 
+              // Remover todos os documentos encontrados
+              querySnapshot.forEach(async (doc) => {
+                  await bd.collection("produtos").doc(doc.id).update({
+                    ativo: true
+                  });
+              });
+              this.getProdutosDesativados()
+              this.notifySucess("Produto ativado com sucesso!")
+          } catch (error) {
+              this.notifyError("Erro ao ativar o produto: ", error)
+          }
+        }
+
+        },
+        mounted(){
+          this.verificarLarguraTela()
+          this.getProdutosDesativados()
         }
   }
   </script>
@@ -369,7 +464,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-evenlyn;
-        height: 100vh;
+        height: auto;
     }
     .btnsADM{
       display: flex;
@@ -377,6 +472,9 @@
     }
     .btnADM{
       border-radius: 10px;
+    }
+    .tabelaDesativados{
+      padding: 50px;
     }
     @media(max-width : 730px){
       .card1{
@@ -387,7 +485,10 @@
         margin-top: 150px;
       }
       .adm{
-      height: 75em;
+      height: auto;
+    }
+    .tabelaDesativados{
+      padding: 10px;
     }
     }
     
