@@ -28,7 +28,7 @@
         pass : null
       }
     },
-    emits :['logado'],
+    emits :['Esta-logado'],
     methods :{
     notifySucessLogin(){
         const Toast = Swal.mixin({

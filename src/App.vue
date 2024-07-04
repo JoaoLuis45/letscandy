@@ -56,7 +56,6 @@ export default {
     },
     logar(){
         let session = JSON.parse(localStorage.getItem('session')) || []
-        console.log()
         if (session.length != 0){
             this.logado = true
             this.user = session[0]

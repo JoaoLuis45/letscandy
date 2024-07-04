@@ -27,13 +27,6 @@ const routes = [
     path: '/adm',
     name: 'adm',
     component: () => import(/* webpackChunkName: "adm" */ '../views/adm.vue')
-    // beforeEnter : (to, from,next) => {
-    //   if(!app.data().logado){
-    //     //next('/')
-    //   }else{
-    //    // next()
-    //   }
-    // }
   }
 ]
 
@@ -41,5 +34,18 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  let logado = null
+  let session = JSON.parse(localStorage.getItem('session')) || []
+        if (session.length != 0){
+            logado = true
+        }
+  if (to.path === '/adm' && !logado) {
+    next('/'); // Redireciona para a página inicial ou outra página
+  } else {
+    next(); // Permite o acesso
+  }
+});
 
 export default router
