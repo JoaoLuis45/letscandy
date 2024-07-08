@@ -128,7 +128,7 @@ body{
 .fotocol1{
     height: 500px;
     width: 500px;
-    background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718378412/fotocoluna_tyxnua.jpg);
+    background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1720470242/Imagem_do_WhatsApp_de_2024-07-08_%C3%A0_s_17.21.17_c882d673_ebupzc.jpg);
     background-size: contain;
     background-position: center;
 }
@@ -241,7 +241,7 @@ body{
     border-radius: 50%;
     height: 400px;
     width: 400px;
-    background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718207973/logocandy_pcocfh.jpg);
+    background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1720470242/Imagem_do_WhatsApp_de_2024-07-08_%C3%A0_s_17.20.34_8fe4f726_venrwd.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
