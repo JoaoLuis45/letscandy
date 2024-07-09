@@ -26,7 +26,7 @@
             </div> -->
             <div v-show="extras" class="tab">
               <h1>Extras</h1>
-              <p>Me chamo Letícia Ramos, curso direito e estou no 10º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís Ramos, cursa Ciência da Computação e trabalha como desenvolvedor de softwares.</p>
+              <p>Me chamo Letícia Ramos, curso direito e estou no 10º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís e trabalha como desenvolvedor.</p>
             </div>
           </div>
         </div>
