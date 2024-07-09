@@ -288,6 +288,7 @@
               await bd.collection("produtos").add({
                   sabor: sabor,
                   preco: preco,
+                  ativo : true,
                   qtd: qtd,
                   categoria:categoria,
                   desc: desc,
