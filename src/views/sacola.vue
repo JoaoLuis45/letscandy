@@ -147,7 +147,7 @@ export default {
       let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
       sacola = sacola.map(sacolaItem => {
           if (sacolaItem.sabor === i.sabor) {
-              return { ...sacolaItem, qtd: sacolaItem.qtd + 1, preco: sacolaItem.preco + (sacolaItem.preco/sacolaItem.qtd) };
+              return { ...sacolaItem, qtd: parseFloat(sacolaItem.qtd) + 1, preco: parseFloat(sacolaItem.preco) + (parseFloat(sacolaItem.preco)/parseFloat(sacolaItem.qtd)) };
           }
           return sacolaItem;
       });
@@ -163,7 +163,7 @@ export default {
         let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
         sacola = sacola.map(sacolaItem => {
             if (sacolaItem.sabor === i.sabor && sacolaItem.qtd > 1) {
-                return { ...sacolaItem, qtd: sacolaItem.qtd - 1, preco: sacolaItem.preco - (sacolaItem.preco/sacolaItem.qtd)  };
+                return { ...sacolaItem, qtd: parseFloat(sacolaItem.qtd) - 1, preco: parseFloat(sacolaItem.preco) - (parseFloat(sacolaItem.preco)/parseFloat(sacolaItem.qtd))  };
             }
             return sacolaItem;
         });
