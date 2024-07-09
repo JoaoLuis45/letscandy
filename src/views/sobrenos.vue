@@ -139,7 +139,8 @@
     padding: 20px;
     background-color: #dfdfdf4a;
     width: 65%;
-    height: 420px;
+    height: auto;
+    margin-bottom: 50px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: 2px solid var(--cor-primaria);
