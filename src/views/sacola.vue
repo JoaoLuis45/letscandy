@@ -137,7 +137,7 @@ export default {
     },
     async removeItem(i) {
         let sacola = JSON.parse(localStorage.getItem('sacola')) || [];
-        sacola = sacola.filter(sacolaItem => sacolaItem.id !== i.id);
+        sacola = sacola.filter(sacolaItem => sacolaItem.sabor !== i.sabor);
         localStorage.setItem('sacola', JSON.stringify(sacola));
         this.sacola = sacola;
         this.notifySucessRemovedItem()
