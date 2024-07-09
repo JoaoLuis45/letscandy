@@ -363,7 +363,7 @@ export default {
             mensagem = mensagem + itens
             mensagem = mensagem + `Pedido: R$${total}%0A${formValues.envio}%0ATotal: R$${totalGeral}%0A%0APagamento em:      ${formValues.pgto}%0A%0AEndereço da Entrega%0A%0ARua: ${formValues.rua}%0AComplemento: ${formValues.complemento}%0ABairro: ${formValues.bairro}%0ACidade: ${formValues.cidade}%0A%0A *________________________________*%0AAgradecemos a preferência!%0Awww.letscandy.com.br`
             
-            const url = 'https://wa.me/5581997947843?text=' + mensagem
+            const url = 'https://wa.me/5581995851756?text=' + mensagem
             console.log(url)
             window.open(url, '_blank');
           }
