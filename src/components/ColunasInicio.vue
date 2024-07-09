@@ -10,7 +10,7 @@
                   <h5 class="card-header fs-1">Let's Candy</h5>
                   <div class="card-body">
                     <h5 class="card-title fs-2">Torne sua vida mais doce</h5>
-                    <p class="card-text fs-4">Uma doçeria localizada na Várzea, que produz os melhores tipos de doces com qualidade e gostosura!</p>
+                    <p class="card-text fs-4">Uma doceria localizada na Várzea, que produz os melhores tipos de doces com qualidade e gostosura!</p>
                     <a class="btn btn-danger w-75 fs-5 btnColunaa" href="#scrollspyHeading1">Ir para o cardápio</a>
                   </div>
                 </div>

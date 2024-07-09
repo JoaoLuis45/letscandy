@@ -6,8 +6,8 @@
         <div class="container-fluid sobre">
           <div class="tabSobreNos">
             <div @click="quemSomosNos" class="btnTab" :class="{ marcado: quemSomos}">Quem somos</div>
-            <div @click="ondeVamosNos" class="btnTab" :class="{ marcado: paraOndeVamos}">Para onde vamos</div>
-            <div @click="oqueFaremosNos" class="btnTab" :class="{ marcado: oqueFaremos}">O que faremos</div>
+            <!-- <div @click="ondeVamosNos" class="btnTab" :class="{ marcado: paraOndeVamos}">Para onde vamos</div>
+            <div @click="oqueFaremosNos" class="btnTab" :class="{ marcado: oqueFaremos}">O que faremos</div> -->
             <div @click="extrasNos" class="btnTab" :class="{ marcado: extras}">Extras</div>
           </div>
           <div class="tabs">
@@ -16,17 +16,17 @@
               <h1>Quem somos nós?</h1>
               <p>somos um casal de microempreendedores que estamos tentando uma nova forma de gerar uma renda extra, e pensamos numa doceria online!</p>
             </div>
-            <div v-show="paraOndeVamos" class="tab">
+            <!-- <div v-show="paraOndeVamos" class="tab">
               <h1>Para onde vamos?</h1>
-              <p>Nós temos o sonho de um dia conseguirmos morar no Canadá, é um sonho que almejamos desde sempre e estamos na luta diária para quebrar nossas barreiras e conquistar nosso objetivo!</p>
-            </div>
-            <div v-show="oqueFaremos" class="tab">
+              <p></p>
+            </div> -->
+            <!-- <div v-show="oqueFaremos" class="tab">
               <h1>O que faremos?</h1>
               <p>Vamos focar nossas energias na Let's Candy como forma de renda extra, também iremos fazer cursos de inglês acadêmico, estudar lugares e estilos de vida que melhor se adequam a nossa realidade no Canadá.</p>
-            </div>
+            </div> -->
             <div v-show="extras" class="tab">
               <h1>Extras</h1>
-              <p>Me chamo Letícia Gabriela da Silva Ramos Araújo, curso direito e estou no 9º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís, cursa Ciência da Computação e trabalha como desenvolvedor de softwares.</p>
+              <p>Me chamo Letícia Ramos, curso direito e estou no 10º período, sou casada, e tenho uma linda filhinha chamada Helena! Meu marido se chama João Luís Ramos, cursa Ciência da Computação e trabalha como desenvolvedor de softwares.</p>
             </div>
           </div>
         </div>
@@ -45,8 +45,8 @@
     data(){
       return{
         quemSomos : true,
-        paraOndeVamos : false,
-        oqueFaremos : false,
+        // paraOndeVamos : false,
+        // oqueFaremos : false,
         extras : false,
       }
     },
@@ -57,18 +57,18 @@
         this.oqueFaremos = false
         this.extras = false
       },
-      ondeVamosNos(){
-        this.quemSomos = false
-        this.paraOndeVamos = true
-        this.oqueFaremos = false
-        this.extras = false
-      },
-      oqueFaremosNos(){
-        this.quemSomos = false
-        this.paraOndeVamos = false
-        this.oqueFaremos = true
-        this.extras = false
-      },
+      // ondeVamosNos(){
+      //   this.quemSomos = false
+      //   this.paraOndeVamos = true
+      //   this.oqueFaremos = false
+      //   this.extras = false
+      // },
+      // oqueFaremosNos(){
+      //   this.quemSomos = false
+      //   this.paraOndeVamos = false
+      //   this.oqueFaremos = true
+      //   this.extras = false
+      // },
       extrasNos(){
         this.quemSomos = false
         this.paraOndeVamos = false

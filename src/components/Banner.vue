@@ -8,13 +8,13 @@
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718249206/back4_b5xbg4.jpg);">
+          <div class="carousel-item active imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1720546596/banner1_ihbogn.jpg);">
 
           </div>
-          <div class="carousel-item imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718248459/back2_in6iss.jpg);" >
+          <div class="carousel-item imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1720546596/banner2_f09v88.jpg);" >
 
           </div>
-          <div class="carousel-item imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1718248551/back3_q5k3se.jpg);">
+          <div class="carousel-item imagemCarrossel" style="background-image: url(https://res.cloudinary.com/dqxjwwrcu/image/upload/v1720546596/banner3_mn5bam.jpg);">
 
           </div>
         </div>
